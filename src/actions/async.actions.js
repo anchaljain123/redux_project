@@ -11,6 +11,7 @@ import {
 
 } from './actions'
 import fetch from 'isomorphic-fetch'
+
 const userDetail ={
     'fname':'anchal',
     'lname':'jain'
@@ -62,8 +63,9 @@ export const asyncDeleteAction = (product) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body:JSON.stringify({name: product}),
+            body:JSON.stringify({name: product}), //need object at backend
         })
+            .then( res => res.json())
             .then(data => {
                 dispatch(deleteProductSuccess(data));
             })
@@ -73,7 +75,7 @@ export const asyncDeleteAction = (product) => {
     }
 };
 
-export const asyncUpdateAction = (product) => {
+export const asyncUpdateAction = (productState) => {
 
     return (dispatch) => {
 
@@ -83,8 +85,9 @@ export const asyncUpdateAction = (product) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body:JSON.stringify({name: product}),
+            body:JSON.stringify({state: productState}),
         })
+            .then( res => res.json())
             .then(data => {
                 dispatch(updateProductSuccess(data));
             })

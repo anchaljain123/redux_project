@@ -9,7 +9,16 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/}
+      {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
+        {
+            test: /\.(png|jpg|jpeg|gif|webp|svg|ico)?$/,
+            use: [
+                {
+                    loader: 'file-loader',
+
+                },
+            ],
+        },
     ]
   },
   plugins: [
@@ -23,5 +32,8 @@ module.exports = {
     compress: true,
     port: 9000,
     stats: 'errors-only'
-  }
+  },
+
+
+
 }

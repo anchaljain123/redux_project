@@ -27,6 +27,7 @@ export const reducers = (state=initialState,action) =>{
             }
         case  FETCH_USERS_SUCCESS:{
             const products = state.products.concat(action.products);
+
           return{
                 ...state,
               products:products,
@@ -53,8 +54,11 @@ export const reducers = (state=initialState,action) =>{
         }
 
         case DELETE_PRODUCT_SUCCESS :{
+            let products = action.products;
             return{
-                ...state
+                ...state,
+                products:products,
+                loading:false
             }
         }
 
@@ -65,8 +69,11 @@ export const reducers = (state=initialState,action) =>{
         }
 
         case UPDATE_PRODUCT_SUCCESS:{
-            return {
-                ...state
+            let products = action.products;
+            return{
+                ...state,
+                products:products,
+                loading:false
             }
         }
 

@@ -1,15 +1,23 @@
 import React,{ Component } from 'react';
 import App from './App'
-
+import { asyncDeleteAction,asyncUpdateAction } from '../actions'
+import { connect } from 'react-redux';
+import { BrowserRouter as Router,Route,withRouter } from 'react-router-dom'
+import { browserHistory } from 'react-router'
 class Container extends Component{
 
     render(){
         return(
             <div>
-              <App/>
+                <Router history = { browserHistory }>
+                    <App/>
+                </Router>
             </div>
         )
     }
 }
 
-export default Container;
+const mapStateToProps = state => state;
+
+const MainContainer = connect(mapStateToProps)(Container);
+export default MainContainer;

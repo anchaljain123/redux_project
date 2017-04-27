@@ -12,14 +12,11 @@ exports.createUser = function (userdata,res) {
 }
 
 exports.getProduct = function (res) {
-
     User.find({},function (err,data) {
-
         if(err) console.log(err);
         else
         {
-
-          res.send(data)
+            res.send(data)
         }
     })
 
@@ -30,23 +27,30 @@ exports.deleteProduct = function (productData,res) {
     User.remove(productData,function (err,data) {
         if(err) console.log(err);
         else{
-            res.send(data)
+            User.find({},(err,updateData) =>{
+                res.send(updateData)
+            })
+
         }
     })
 }
 
 exports.updateProduct = function (product,res) {
-
-    User.find(productId,function (err,data) {
+    let productName ={name:product.name};
+    User.find(productName,function (err,data) {
         if(err) console.log(err);
-        else {
-            User.update(product,function (err,data) {
+        else{
+            User.update(product,(err,data) =>{
                 if(err) console.log(err);
-                else
-                {
-                    res.send(data)
+                else {
+                    User.find({}, (err, updateData) => {
+                        console.log(updateData,">>>>>>>>>>>>>")
+                        res.send(updateData)
+                    })
                 }
             })
         }
     })
 }
+
+

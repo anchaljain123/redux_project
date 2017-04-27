@@ -12,6 +12,7 @@ exports.getProduct = function (req,res,next) {
 exports.deleteProduct = function (req,res,next) {
     const productData = req.body;
     userService.deleteProduct(productData,res);
+
 }
 
 exports.updateProduct = function (req,res,next) {
