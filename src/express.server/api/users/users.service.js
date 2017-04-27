@@ -36,21 +36,23 @@ exports.deleteProduct = function (productData,res) {
 }
 
 exports.updateProduct = function (product,res) {
-    let productName ={name:product.name};
-    User.find(productName,function (err,data) {
+    let productId ={'_id':product._id};
+    const productDetails = {
+        name:product.name,
+        type:product.type,
+        price:product.price,
+        brand:product.brand,
+    }
+    User.update(productId,product,{upsert:true},(err,data) =>{
         if(err) console.log(err);
-        else{
-            User.update(product,(err,data) =>{
-                if(err) console.log(err);
-                else {
-                    User.find({}, (err, updateData) => {
-                        console.log(updateData,">>>>>>>>>>>>>")
-                        res.send(updateData)
-                    })
-                }
+        else {
+            User.find({}, (err, updateData) => {
+                res.send(updateData);
             })
         }
     })
 }
+
+
 
 

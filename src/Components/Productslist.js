@@ -18,7 +18,9 @@ class Productslist extends Component{
             <div >
                 <ul className="list-group">
                     {
+
                         Productlist.map((item,i) =>(
+
                             <li key={item.name} className="list-group-item">
                                 <img className="img-responsive" src={img1} alt=""/>
                                 <Link to={`/products/`+item.name}>{item.name}</Link>

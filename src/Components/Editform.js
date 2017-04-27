@@ -1,11 +1,11 @@
 import React,{ Component } from 'react'
 import { connect } from 'react-redux';
 import  './App'
-
+import { asyncDeleteAction ,asyncUpdateAction} from '../actions'
 class Editform extends Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             data:{},
         }
@@ -22,11 +22,14 @@ class Editform extends Component{
     editProductdetails = () => {
         let { data } = this.state;
         let productObj =data;
-        this.props.saveChanges(productObj);
-    }
+            this.props.dispatch(asyncUpdateAction(productObj));
+            this.props.propsval.history.push('/')
+        }
 
     changeHandler = (event) => {
-        this.setState({ data : event.target.value })
+        const { data } = this.state;
+        const updatedData = Object.assign({}, data, {[event.target.name]: event.target.value});
+        this.setState({ data : updatedData })
     }
 
 
@@ -37,31 +40,31 @@ class Editform extends Component{
             <div>
                 Name :  <input
                 type="text"
+                name="name"
                 value={data.name}
-                onChange={this.changeHandler(event)}
+                onChange={(event) =>this.changeHandler(event)}
             />
                 Brand : <input
                 type="text"
+                name="brand"
                 value={data.brand}
-                onChange={this.changeHandler(event)}
+                onChange={(event) => this.changeHandler(event)}
             />
                 Type : <input
                 type="text"
+                name="type"
                 value={data.type}
-                onChange={this.changeHandler(event)}
+                onChange={(event) => this.changeHandler(event)}
             />
                 Price : <input
                 type="text"
+                name="price"
                 value={data.price}
-                onChange={this.changeHandler(event)}
-            />
-                Warranty_Years : <input
-                type="text"
-                value={data.warranty_years}
-                onChange={this.changeHandler(event)}
+                onChange={(event) => this.changeHandler(event)}
             />
 
-                <button onClick={this.editProductdetails}>Save Updates</button>
+
+                <button onClick={ this.editProductdetails }>Save Updates</button>
             </div>
         )
     }

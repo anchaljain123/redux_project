@@ -69,7 +69,7 @@ export const reducers = (state=initialState,action) =>{
         }
 
         case UPDATE_PRODUCT_SUCCESS:{
-            let products = action.products;
+            let products = action.product;
             return{
                 ...state,
                 products:products,

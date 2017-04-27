@@ -22,30 +22,24 @@ class Productdetails extends  Component{
         })
     }
 
-    saveChanges = (productState) =>{
-        this.props.dispatch(asyncUpdateAction(productState));
-        this.setState({ edit: false });
-    }
-
-    render() {
+     render() {
         const Productlist = this.props.products;
-        console.log(this.state, "state");
         return (
             <div>
                 {
                     this.state.edit ?
                         <Editform
-                            saveChanges = {this.saveChanges}
                             productName ={this.props.match.params.name}
                             Productlist = {Productlist}
+                            propsval = {this.props}
                         />
                         :
                         Productlist.map((item,i) =>(
                             this.props.match.params.name == item.name ?
                                 <div className="container">
                                     {
-                                        Object.keys(item).map((key,i) => {
-                                            if (key == '_id') i++;
+                                        Object.keys(item).map((key) => {
+
                                             return <div>
                                                 <div className="col-sm-5 col-md-2">{key} :{ item[key] } </div>
                                             </div>

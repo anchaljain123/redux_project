@@ -76,6 +76,7 @@ export const asyncDeleteAction = (product) => {
 };
 
 export const asyncUpdateAction = (productState) => {
+    console.log('productState', productState)
 
     return (dispatch) => {
 
@@ -85,7 +86,7 @@ export const asyncUpdateAction = (productState) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body:JSON.stringify({state: productState}),
+            body:JSON.stringify(productState),
         })
             .then( res => res.json())
             .then(data => {
