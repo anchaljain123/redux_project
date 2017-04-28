@@ -1,3 +1,3 @@
 # redux_project
 
-1.product list , add ,del ,edit
+1.products listing ,deletion ,editing from mongdb

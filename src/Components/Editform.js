@@ -1,7 +1,7 @@
 import React,{ Component } from 'react'
 import { connect } from 'react-redux';
 import  './App'
-import { asyncDeleteAction ,asyncUpdateAction} from '../actions'
+import { asyncUpdateAction}  from '../actions'
 class Editform extends Component{
 
     constructor(props){
