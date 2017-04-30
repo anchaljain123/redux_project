@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <title>React-Redux</title>
     <style media="screen">
         body {
@@ -13,12 +14,42 @@
         }
         h1 {
             font-weight: normal;
+            text:blue;
+            text-align: center;
         }
+        .largenav {
+            display: block;
+        }
+
+        #flipkart-navbar {
+            background-color: #2874f0;
+            color: #FFFFFF;
+        }
+        .row2 {
+             padding-bottom: 20px;
+         }
+
+
+
     </style>
 
 </head>
 <body>
-<h1> Products </h1>
+<div id="flipkart-navbar">
+    <div class="container">
+
+        <div class="row row2">
+            <div class="col-sm-2">
+
+                <h1 style="margin:0px;"><span class="largenav">Products</span></h1>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
 <div id="app"></div>
 </body>
 </html>

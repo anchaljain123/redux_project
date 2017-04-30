@@ -3,32 +3,47 @@ import { connect } from 'react-redux';
 import { asyncAction } from '../actions'
 import { Link } from 'react-router-dom'
 import img1 from '../images/one.png'
+import Styling from './Styling'
+import './stylecss.css'
 
 class Productslist extends Component{
     constructor(){
         super()
     }
+
     componentWillMount(){
         this.props.dispatch(asyncAction());
     }
 
     render(){
         const Productlist = this.props.products;
+
         return (
-            <div >
-                <ul className="list-group">
-                    {
+            <div className="row">
+                {
+                    Productlist.map((item,i) =>(
+                        <div className="col-sm-3">
+                            <div className="card">
+                                <canvas className="header-bg" width="250" height="70" id="header-blur"></canvas>
 
-                        Productlist.map((item,i) =>(
+                                <div className="avatar">
+                                    <img className="img-responsive" src={img1} alt=""/>
+                                </div>
+                                <div className="content">
+                                    <Link to={`/products/`+item.name}>
+                                        <strong style={Styling.listing}>{item.name}</strong>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
 
-                            <li key={item.name} className="list-group-item">
-                                <img className="img-responsive" src={img1} alt=""/>
-                                <Link to={`/products/`+item.name}>{item.name}</Link>
-                            </li>
-                        ))
-                    }
-                </ul>
+
+
             </div>
+
+
         )
     }
 }

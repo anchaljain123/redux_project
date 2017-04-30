@@ -1,7 +1,9 @@
 import React,{ Component } from 'react'
 import { connect } from 'react-redux';
-import { asyncDeleteAction ,asyncUpdateAction} from '../actions'
+import { asyncDeleteAction } from '../actions'
 import Editform from './Editform'
+import Styling from './Styling'
+import img1 from '../images/one.png'
 
 class Productdetails extends  Component{
     constructor(props){
@@ -22,7 +24,7 @@ class Productdetails extends  Component{
         })
     }
 
-     render() {
+    render() {
         const Productlist = this.props.products;
         return (
             <div>
@@ -36,11 +38,15 @@ class Productdetails extends  Component{
                         :
                         Productlist.map((item,i) =>(
                             this.props.match.params.name == item.name ?
-                                <div className="container">
+                                <div className="container" style={Styling.details}>
+
+                                    <img className="img-responsive" src={img1} alt=""/>
                                     {
+
                                         Object.keys(item).map((key) => {
 
                                             return <div>
+
                                                 <div className="col-sm-5 col-md-2">{key} :{ item[key] } </div>
                                             </div>
                                         })
